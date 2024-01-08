@@ -73,6 +73,9 @@ const Register = () => {
           <h1 className="font-bold text-md mb-3 text-purple-500 uppercase">
             Register
           </h1>
+          <h5 className="font-bold uppercase flex justify-center  items-center">
+            Please fill in every details
+          </h5>
           <div>
             <div>
               <label htmlFor="title" className="block text-sm text-gray-500">
@@ -111,7 +114,7 @@ const Register = () => {
             <input
               type="text"
               className="border border-gray-300 p-3 w-full mt-3"
-              placeholder="email"
+              placeholder="email e.g fisayo@gmail.com"
               name="email"
               onChange={handleChange}
             />
