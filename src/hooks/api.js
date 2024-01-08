@@ -10,7 +10,7 @@ export const useRecentBlogs = () => {
 
 export const useGetSingleBlog = (postid) => {
   return useQuery({
-    queryKey: ["singleblog"],
+    queryKey: ["singleblog", postid],
     queryFn: () => newRequest.get(`/post/${postid}`).then((res) => res.data),
   });
 };

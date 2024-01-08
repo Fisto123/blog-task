@@ -11,6 +11,7 @@ const EditPost = () => {
   const [postError, setPostError] = useState(null);
   let nav = useNavigate();
   let { postid } = useParams();
+  let user = getDataFromLocalStorage()?.id;
 
   const { isLoading, data } = useGetSingleBlog(postid);
 
@@ -22,12 +23,14 @@ const EditPost = () => {
   const [postData, setPostData] = useState(initialPostdata);
   const updateUserBlog = useUpdateUsersBlog();
   useEffect(() => {
-    setPostData({
-      text: data?.text,
-      image: data?.image,
-      tags: data?.tags,
-    });
-    setTags(data?.tags);
+    if (data) {
+      setPostData({
+        text: data?.text,
+        image: data?.image,
+        tags: data?.tags,
+      });
+      setTags(data?.tags);
+    }
   }, [data]);
   const handleTagInputChange = (e) => {
     setTagInput(e.target.value);
@@ -63,6 +66,7 @@ const EditPost = () => {
     // Update the tags state
     setTags(newTags);
   };
+  console.log(postData);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -82,10 +86,7 @@ const EditPost = () => {
       setPostData((prev) => {
         return {
           ...prev,
-          owner: {
-            ...prev.owner,
-            ...getDataFromLocalStorage(),
-          },
+          owner: user?.id,
         };
       });
     } else {

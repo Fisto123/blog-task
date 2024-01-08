@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import {
-  getDataFromLocalStorage,
-  setLocalStorage,
-} from "../../utils/localstorage";
+import { getDataFromLocalStorage } from "../../utils/localstorage";
 import { newRequest } from "../../utils/newRequest";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +22,6 @@ const CreatePost = () => {
   const handleTagInputChange = (e) => {
     setTagInput(e.target.value);
   };
-
   const handleAddTag = () => {
     if (tagInput.trim() !== "") {
       setTags([...tags, tagInput.trim()]);
@@ -75,7 +71,7 @@ const CreatePost = () => {
       setPostData((prev) => {
         return {
           ...prev,
-          owner: user?.id,
+          owner: user?.id || user?.owner?.id,
         };
       });
     } else {
@@ -94,7 +90,6 @@ const CreatePost = () => {
     try {
       let res = await newRequest.post(`/post/create`, postData);
       if (res.status === 200) {
-        setLocalStorage(res?.data);
         toast.success("post created successfully");
         nav("/");
       }

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Delete } from "@mui/icons-material";
 
 const MyPosts = () => {
-  let userid = getDataFromLocalStorage()?.owner?.id;
+  let userid = getDataFromLocalStorage()?.id;
   const { isLoading, error, data } = useGetUsersBlog(userid);
   const deleteUsersBlog = useDeleteUsersBlog();
   const handleDelete = async () => {
