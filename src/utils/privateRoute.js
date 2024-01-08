@@ -7,5 +7,6 @@ export const PrivateRoute = ({ children }) => {
   if (!isUserAvailable) {
     return <Navigate to="/register" replace />;
   }
+
   return children;
 };
