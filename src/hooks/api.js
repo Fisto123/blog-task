@@ -35,8 +35,6 @@ export const useUpdateUsersBlog = () => {
 
   return useMutation({
     mutationFn: ({ postid, data }) => {
-      console.log(postid, data);
-
       return newRequest.put(`/post/${postid}`, data);
     },
     onSuccess: () => {

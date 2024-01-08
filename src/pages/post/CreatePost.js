@@ -13,16 +13,14 @@ const CreatePost = () => {
   const [postError, setPostError] = useState(null);
   let nav = useNavigate();
   const user = getDataFromLocalStorage();
-  console.log(user);
   let initialPostdata = {
     text: "",
     image: "",
     likes: 0,
-    owner: user?.owner?.id,
+    owner: "",
     tags: [],
   };
   const [postData, setPostData] = useState(initialPostdata);
-  console.log(postData);
 
   const handleTagInputChange = (e) => {
     setTagInput(e.target.value);
@@ -77,10 +75,7 @@ const CreatePost = () => {
       setPostData((prev) => {
         return {
           ...prev,
-          owner: {
-            ...prev.owner,
-            ...getDataFromLocalStorage(),
-          },
+          owner: user?.id,
         };
       });
     } else {
@@ -89,6 +84,7 @@ const CreatePost = () => {
         return {
           ...prev,
           [name]: value,
+          owner: user?.id,
         };
       });
     }
@@ -103,7 +99,6 @@ const CreatePost = () => {
         nav("/");
       }
     } catch (error) {
-      console.log(error);
       if (error?.response?.status === 400) {
         setPostError(error);
         toast.error("failed to post blog");
