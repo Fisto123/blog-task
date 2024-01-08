@@ -12,6 +12,7 @@ import EditPost from "./pages/post/EditPost";
 import MyPosts from "./pages/post/MyPosts";
 import AllPosts from "./pages/post/AllPosts";
 import NotFound from "./pages/Not-Found/NotFound";
+import { PrivateRoute } from "./utils/privateRoute";
 function App() {
   const queryClient = new QueryClient();
 
@@ -23,10 +24,24 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/create-post" element={<CreatePost />} />
+            <Route
+              path="/create-post"
+              element={
+                <PrivateRoute>
+                  <CreatePost />
+                </PrivateRoute>
+              }
+            />
             <Route path="/single-post/:postid" element={<SinglePost />} />
             <Route path="/edit-post/:postid" element={<EditPost />} />
-            <Route path="/userposts" element={<MyPosts />} />
+            <Route
+              path="/userposts"
+              element={
+                <PrivateRoute>
+                  <MyPosts />
+                </PrivateRoute>
+              }
+            />
             <Route path="/posts" element={<AllPosts />} />
             <Route path="/register" element={<Register />} />
             <Route path="*" element={<NotFound />} />
