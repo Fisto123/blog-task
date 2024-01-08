@@ -1,0 +1,24 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.page-item {
+  margin: 0 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.page-item a {
+  color: #333; /* Change to your desired text color */
+  text-decoration: none;
+  padding: 8px;
+}
+
+.active a {
+  background-color: #3490dc; /* Change to your desired active background color */
+  color: #fff; /* Change to your desired active text color */
+  border-radius: 4px;
+}

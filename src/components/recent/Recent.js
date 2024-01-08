@@ -10,7 +10,7 @@ const Recent = () => {
   const { isLoading, error, data } = useRecentBlogs();
   const recentData = data && data ? data?.data?.slice(0, 4) : [];
   let nav = useNavigate();
-
+  console.log(data);
   return (
     <div className="h-auto  mt-10">
       <div className=" text-white m-4 flex md:flex-row xs:flex-col justify-center gap-2 ">
