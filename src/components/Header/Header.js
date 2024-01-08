@@ -27,13 +27,15 @@ const Header = () => {
                 Register
               </button>
             )}
+            {userExists && (
+              <button
+                type="button"
+                onClick={() => nav("/create-post")}
+                className="text-[white] ml-2 bg-[purple] hover:bg-[purple] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0  dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Create Post
+              </button>
+            )}
 
-            <button
-              type="button"
-              onClick={() => nav("/create-post")}
-              className="text-[white] ml-2 bg-[purple] hover:bg-[purple] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0  dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              Create Post
-            </button>
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
@@ -66,13 +68,16 @@ const Header = () => {
                   Home
                 </a>
               </li>
-              <li>
-                <a
-                  href="/userposts"
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                  My Posts
-                </a>
-              </li>
+              {userExists && (
+                <li>
+                  <a
+                    href="/userposts"
+                    className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                    My Posts
+                  </a>
+                </li>
+              )}
+
               <li>
                 <a
                   href="/"
